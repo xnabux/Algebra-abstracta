@@ -1,0 +1,120 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+class cesar {
+public:
+    cesar(string);
+    void cifrar();
+    void descifrar();
+private:
+    int a;
+    int clave = 3;
+    string copia;
+    string mensaje;
+    string datos = "abcdefghijklmnopqrstuvwxyz";
+};
+
+
+
+
+
+//////////
+
+
+/////////
+
+
+
+
+
+#include "Encabezado.h"
+
+cesar::cesar(string _mensaje) {
+    mensaje = _mensaje;
+
+}
+
+void cesar::cifrar() {
+    copia = mensaje;
+
+    cout << "\nPalabra Cifrada: ";
+
+    for (int i = 0; i < copia.length(); i++) {
+        a = datos.find(copia[i]);
+        if (a == -1)
+            cout << " ";
+
+        else {
+            if (a <= 23) {
+                copia[i] = datos.at(a + 3);
+                cout << copia[i];
+            }
+            else if (a > 23) {
+                copia[i] = datos.at((a - datos.length()) + clave);
+                cout << copia[i];
+
+            }
+
+        }
+    }
+    cout << "\n";
+}
+
+void cesar::descifrar() {
+
+    cout << "Palabra Descifrada: ";
+    for (int i = 0; i < copia.length(); i++) {
+
+
+        a = datos.find(copia[i]);
+        if (a == -1)
+            cout << " ";
+
+        else {
+            if (a >= 3) {
+                copia[i] = datos.at(a - clave);
+                cout << copia[i];
+            }
+            else if (a < 3 && a >= 0) {
+                copia[i] = datos.at(a - clave + datos.length());
+                cout << copia[i];
+
+            }
+
+        }
+    }
+    cout << "\n";
+}
+
+
+
+
+////////
+
+
+////////
+
+
+
+
+
+#include "Encabezado.h"
+#include <iostream>
+
+using namespace std;
+int main()
+{
+    string mensaje;
+    cout << "escribe un mensaje  ";
+    getline(cin, mensaje);
+
+    cesar palabra(mensaje);
+
+    palabra.cifrar();
+    palabra.descifrar();
+
+    return 0;
+}
+
