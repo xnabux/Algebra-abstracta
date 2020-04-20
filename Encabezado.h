@@ -3,15 +3,18 @@
 using namespace std;
 
 
-class cesar {
+class vigenere {
 public:
-    cesar(string);
-    void cifrar();
-    void descifrar();
+    vigenere();
+    string cifrar(string);
+    string descifrar(string);
+
+    string codigo_ASCII(string);
+    string codigo_ASCII_Cifrado(string);
+
+    string alfabeto;
+
+ 
 private:
-    int a;
-    int clave = 3;
-    string copia;
-    string mensaje;
-    string datos = "abcdefghijklmnopqrstuvwxyz";
+    string clave;
 };
